@@ -1,0 +1,108 @@
+$font: 'Open Sans', Helvetica, Arial, sans-serif, 'Segoe UI Symbo';
+
+html, body {
+	background: black;
+}
+html {
+	color: white;
+	background: black;
+}
+body {
+	font-size: 2rem;
+	font-family: monospace;
+	font-weight: 300;
+	padding: 1rem;
+}
+
+.big {font-size: 200%;}
+.giant {font-size:440%;}
+.sub {font-size: 80%;}
+.dim {
+	opacity: .5;
+}
+
+div {
+	display: inline-block;
+}
+
+img.emoji {  
+  // Override any img styles to ensure Emojis are displayed inline
+  margin: 0px !important;
+	font-size: inherit;
+  display: inline !important;
+	height: 25px;
+	width: 25px;
+}
+
+#clock {
+	display: inline-block;
+	float: right;
+	text-align: right;
+	position: relative;
+	margin-bottom: .5rem;
+}
+
+#time {
+	margin-bottom: .5rem;
+}
+
+#forecast {
+	width: 28rem;
+}
+
+#temps {
+	display: inline-block;
+	margin-left: .75rem;
+}
+#temp {
+	display: block;
+}
+#conditions {
+	display: block;
+	margin-bottom: .5rem;
+}
+
+#currently {
+	display: block;
+	float: left;
+	//margin-top: .5rem;
+}
+
+#summary {
+	display: inline-block;
+	line-height: 1.3;
+	> div {
+		display: block;
+	}
+}
+
+footer {
+	display: block;
+	position: fixed;
+	width: 100%;
+	top: 85%;
+}
+#alerts {
+	margin-top: 1rem;
+}
+
+#compliments {
+	position: relative;
+	width: 100%;
+	& > .compliment {
+		width: auto;
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		text-align: center;
+	}
+}
+
+@media (max-width: 48rem) {
+	#clock {
+		display: block;
+		float: initial;
+		text-align: initial;
+	}	
+}
