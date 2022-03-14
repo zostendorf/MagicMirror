@@ -2,7 +2,15 @@
 <html lang = "en">
 
 
-<head></head>
+<head>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js" ></script>
+	<script src="js/main.js"></script>
+	<script>
+		
+	</script>
+</head>
 <body>
 <div id="clock">
 	<div class="giant" id="time">
@@ -11,23 +19,13 @@
 	<div id="date">Loading...
 	</div>
   </div>
-  <div id="forecast">
-	<div id="conditions">
-	  <canvas id="currently" class="big icon" width="120" height="120"></canvas>
-	  <div id="temps">
-		<div class="giant" id="temp">
-		</div>
-		<div id="high"></div>
-		<span class="separator dim"></span>
-		<div id="low" class="sub dim"></div>
-	  </div>
-	</div>
-	<div id="summary">
-	  <div id="minutely">
-	  </div>
-	  <div class="sub dim show" id="hourly">
-	  </div>
-	</div>
+
+  <ul id="currentTemp">
+</ul>
+<ul id="tempHigh">
+</ul>
+<ul id="tempLow">
+</ul>
   </div>
   <footer>
 	<ul id="compliments">
@@ -41,7 +39,7 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 ></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAWjYYdUphlwVVJW4aQJFMBlhP3rG84eh4"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.min.js" ></script>
   <script src="js/main.js"></script>
   </body>

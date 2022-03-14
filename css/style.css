@@ -5,16 +5,17 @@ html, body {
 }
 html {
 	color: white;
+	background: black;
 }
 body {
 	font-size: 2rem;
-	font-family: $font;
+	font-family: monospace;
 	font-weight: 300;
 	padding: 1rem;
 }
 
 .big {font-size: 200%;}
-.giant {font-size: 250%;}
+.giant {font-size:440%;}
 .sub {font-size: 80%;}
 .dim {
 	opacity: .5;
