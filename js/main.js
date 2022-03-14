@@ -1,6 +1,9 @@
 $(document).ready(function (){
 
 'use strict'
+var api = 'https://api.darksky.net/forecast/'
+var key = ''
+key = prompt("Enter DarkSky API key:")
 var lat, lon
 var intervals = { // time intervals in msecs
   compliment: 10000,
@@ -9,11 +12,10 @@ var intervals = { // time intervals in msecs
   fade: 1000
 }
 var compliments;
-var weatherData;
 
 function getTime() {
   $('#time').html(moment().format('h:mm'))
-  $('#date').html(moment().format('dddd, MMMM DD yyyy'))
+  $('#date').html(moment().format('dddd, MMMM d'))
   setTimeout(this, intervals.time)
 }
 
@@ -21,25 +23,50 @@ function init() {
   //TODO modify so that init() only sets timeouts for each function
   console.log('Updating...')
 
+	$.ajax({
+		url: 'http://ip-api.com/json',
+		dataType: 'jsonp',
+		success: function(data) {
+			lat = data.lat
+			lon = data.lon
+			var url = api + key + '/' + lat + ',' + lon
+			var icons = new Skycons({
+				'color': 'white'
+			})
+			console.log(url);
+			$.ajax({
+				url: url,
+				dataType: 'jsonp',
+				success: function(data) {
+					// Set icons
+					$('#currently').html(data.currently.icon).attr('alt', data.currently.summary)
+					icons.set('currently', data.currently.icon)
+					icons.play()
+					$('#temp').html(Math.round(data.currently.temperature) + '&deg;')
+					$('#high').html(Math.round(data.daily.data[0].temperatureMax) + '&deg;')
+					$('#low').html(Math.round(data.daily.data[0].temperatureMin) + '&deg;')
+					$('#temp .separator').add('span').addClass('separator dim').text('\/')
+					$('#minutely').html(data.minutely.summary)
+					$('#hourly').html(data.hourly.summary)
+					$('#daily').html(data.daily.data[0].summary)
+				}
+			})
+		}
+	})
+  // refetch weather at interval
+  setTimeout(this, intervals.weather)
+
   // also:
   getTime()
 
 }
 
-
-
-async function getWeather() {
-	try {
-	  const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=33.79989247499206&lon=-84.33728740000274&appid=49053d2e55100df281a6b95714a9f6b7');
-	  weatherData = response.data
-	  $('#weather').append($('<h1>'+(((weatherData.main.temp-273.15)*9)/5+32)+'</h1>'))
-	  //$('tempHigh')
-	  //$('tempLow')
-	} catch (error) {
-	  console.error(error);
-	}
-  }
-
+function getWeather() {
+  // TODO - pull out of init()
+}
+function getLoc() {
+  // TODO - pull out of init()
+}
 
 function loadCompliments () {
   console.log('Loading compliments...')
@@ -58,9 +85,7 @@ function loadCompliments () {
 }
 
 init()
-getWeather()
 loadCompliments()
-
 
 jQuery(document).ready(function(){ 
     $(function(){
