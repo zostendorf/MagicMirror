@@ -1,4 +1,9 @@
-$font: 'Open Sans', Helvetica, Arial, sans-serif, 'Segoe UI Symbo';
+
+@font-face {
+	font-family: "SpaceMono";
+	src: url("/fonts/SpaceMono-Regular.ttf") format("truetype")
+  }
+  
 
 html, body {
 	background: black;
@@ -9,13 +14,13 @@ html {
 }
 body {
 	font-size: 2rem;
-	font-family: monospace;
+	font-family: SpaceMono;
 	font-weight: 300;
 	padding: 1rem;
 }
 
 .big {font-size: 200%;}
-.giant {font-size:440%;}
+.giant {font-size:540%;}
 .sub {font-size: 80%;}
 .dim {
 	opacity: .5;
@@ -24,6 +29,9 @@ body {
 div {
 	display: inline-block;
 }
+div.grid-container {
+	display: grid;
+  }
 
 img.emoji {  
   // Override any img styles to ensure Emojis are displayed inline
@@ -39,24 +47,31 @@ img.emoji {
 	float: right;
 	text-align: right;
 	position: relative;
-	margin-bottom: .5rem;
+	margin-top: -3rem;
+	margin-bottom: 0rem;
 }
 
 #time {
-	margin-bottom: .5rem;
+	margin-bottom: 0rem;
 }
 
 #forecast {
 	width: 28rem;
 }
 
-#temps {
+#currentTemp {
 	display: inline-block;
-	margin-left: .75rem;
+	margin-right:5rem;
+	margin-bottom: -8rem;
 }
-#temp {
-	display: block;
+#tempHigh {
+	display: inline-block;
 }
+
+#tempLow {
+	display: inline-block;
+}
+
 #conditions {
 	display: block;
 	margin-bottom: .5rem;

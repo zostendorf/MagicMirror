@@ -11,18 +11,41 @@ var intervals = { // time intervals in msecs
 var compliments;
 var weatherData;
 
-function getTime() {
-  $('#time').html(moment().format('h:mm'))
+function getDate() {
   $('#date').html(moment().format('dddd, MMMM DD yyyy'))
   setTimeout(this, intervals.time)
 }
+
+let clock = () => {
+  let date = new Date();
+  let hrs = date.getHours();
+  let mins = date.getMinutes();
+  let secs = date.getSeconds();
+  let period = "AM";
+  if (hrs == 0) {
+    hrs = 12;
+  } else if (hrs >= 12) {
+    hrs = hrs - 12;
+    period = "PM";
+  }
+  hrs = hrs < 10 ? "0" + hrs : hrs;
+  mins = mins < 10 ? "0" + mins : mins;
+  secs = secs < 10 ? "0" + secs : secs;
+
+  let time = `${hrs}:${mins}:${secs} ${period}`;
+  document.getElementById("time").innerText = time;
+  setTimeout(clock, 1000);
+};
+
+clock();
+
 
 function init() {
   //TODO modify so that init() only sets timeouts for each function
   console.log('Updating...')
 
   // also:
-  getTime()
+  getDate()
 
 }
 
@@ -39,7 +62,11 @@ async function getWeather() {
 	} catch (error) {
 	  console.error(error);
 	}
-  }
+}
+
+async function getForecast() {
+	
+}
 
 
 function loadCompliments () {
