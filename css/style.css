@@ -21,6 +21,7 @@ body {
 
 .big {font-size: 200%;}
 .giant {font-size:540%;}
+.reg {font-size: 150%;}
 .sub {font-size: 80%;}
 .dim {
 	opacity: .5;
@@ -52,6 +53,10 @@ img.emoji {
 }
 
 #time {
+	margin-bottom: 0rem;
+}
+
+#ampm {
 	margin-bottom: 0rem;
 }
 
@@ -103,7 +108,7 @@ footer {
 
 #compliments {
 	position: relative;
-	width: 100%;
+	width: 80%;
 	& > .compliment {
 		width: auto;
 		position: absolute;

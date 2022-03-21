@@ -10,6 +10,7 @@ var intervals = { // time intervals in msecs
 }
 var compliments;
 var weatherData;
+var newsData;
 
 function getDate() {
   $('#date').html(moment().format('dddd, MMMM DD yyyy'))
@@ -32,8 +33,10 @@ let clock = () => {
   mins = mins < 10 ? "0" + mins : mins;
   secs = secs < 10 ? "0" + secs : secs;
 
-  let time = `${hrs}:${mins}:${secs} ${period}`;
+  let time = `${hrs}:${mins}:${secs}`;
+  let ampm = `${period}`;
   document.getElementById("time").innerText = time;
+  document.getElementById("ampm").innerText = ampm;
   setTimeout(clock, 1000);
 };
 
@@ -68,25 +71,35 @@ async function getForecast() {
 	
 }
 
+async function getNews() {
+  try {
+    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=us&sortBy=popularity&apiKey=0d86d90cd08e465caded56621316774e');
+    newsData = response.data
+    console.log(newsData)
+    newsData.articles.forEach(function(article) {
+      compliments.push(article.title);
+      console.log(article.title);
+      $('#compliments').append($('<li></li>').text(article.title).addClass('compliment'))
+    });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 function loadCompliments () {
   console.log('Loading compliments...')
   compliments = [
     // TODO load these from a txt file, push to array using Node/Socket
-    'Hello',
-    'Good Day',
-		'Howdy',
-		'Hola!',
-		'Aloha',
-		'Greetings'
+
   ]
-  $.each(compliments, function (index, value) {
-    $('#compliments').append($('<li></li>').text(value).addClass('compliment'))
-  })
+  // $.each(compliments, function (index, value) {
+  //   $('#compliments').append($('<li></li>').text(value).addClass('compliment'))
+  // })
 }
 
 init()
 getWeather()
+getNews()
 loadCompliments()
 
 
