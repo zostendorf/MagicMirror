@@ -66,15 +66,28 @@ img.emoji {
 
 #currentTemp {
 	display: inline-block;
+	position: absolute;
+	top: 200px;
+	left: 1385px;
 	margin-right:5rem;
 	margin-bottom: -8rem;
 }
 #tempHigh {
 	display: inline-block;
+	position: absolute;
+	top: 265px;
+	left: 1385px;
+	margin-right:5rem;
+	margin-bottom: -8rem;
 }
 
 #tempLow {
 	display: inline-block;
+	position: absolute;
+	top: 265px;
+	left: 1430px;
+	margin-right:5rem;
+	margin-bottom: -8rem;
 }
 
 #conditions {
